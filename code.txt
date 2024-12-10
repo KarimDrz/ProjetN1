@@ -1,0 +1,956 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR"><head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
+        
+        <link rel="stylesheet" type="text/css" href="/public/css/reset.css?v=-1" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/theme.css.jsf?ln=primefaces-myges" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/primefaces.css.jsf?ln=primefaces&amp;v=5.1" /><script type="text/javascript" src="/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=5.1"></script><script type="text/javascript" src="/javax.faces.resource/jquery/jquery-plugins.js.jsf?ln=primefaces&amp;v=5.1"></script><script type="text/javascript" src="/javax.faces.resource/primefaces.js.jsf?ln=primefaces&amp;v=5.1"></script><link type="text/css" rel="stylesheet" href="/javax.faces.resource/loading-bar.css.jsf?ln=css" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/flexslider-custom.css.jsf?ln=flexslider" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/footer.css.jsf?ln=css" />
+    <title>myGES - Extranet du Réseau GES</title>
+
+    <meta http-equiv="content-language" content="fr-FR" />
+    <meta name="language" content="fr-FR" />
+    <link rel="icon" type="image/png" href="/public/images/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/public/css/reset.css?v=-1" />
+
+    <link rel="stylesheet" type="text/css" href="/public/css/print.css?v=-1" media="print" />
+
+    <link rel="stylesheet" type="text/css" href="/public/css/resume.css?v=-1" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/public/css/theme-myges.css?v=-1" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/public/css/main-v2.css?v=-1" /><!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="/public/css/ie9.css" /><![endif]--><!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="/public/css/ie8.css" /><![endif]-->
+
+    <script type="text/javascript" src="/public/js/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript" src="/public/js/jquery.myges-menu.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.fireevent.js"></script>
+    <script type="text/javascript" src="/public/js/primefaces.locales_fr.js"></script></head><body>
+
+    
+    <script type="text/javascript">
+        var maxIdleTime = 7200;
+        var lastRequestTime = (new Date()).getTime();
+        var sessionTimeOut = false;
+
+        function onAjax() {
+            var actualTime = (new Date()).getTime();
+            var idleTime = (actualTime - lastRequestTime) / 1000;
+
+            if (idleTime < maxIdleTime) {
+                lastRequestTime = actualTime;
+                PF('mgLoadingBar').show();
+            } else {
+                sessionTimeOut = true;
+                reloadPage();
+            }
+        }
+
+        function reloadPage() {
+            location.href = document.URL.replace('?faces-redirect=true', '') + '?faces-redirect=true';
+        }
+
+        function showMgErrorDialog() {
+            if (!sessionTimeOut) {
+                PF('mgAjaxErrorDialog').show();
+            }
+        }
+
+        function ajaxErrorStatusHandler() {
+            showMgErrorDialog();
+        }
+
+    </script><div id="j_idt10:mgAjaxErrorDialog" class="ui-dialog ui-widget ui-widget-content ui-overlay-hidden ui-corner-all ui-shadow mg_dialog"><div class="ui-dialog-content ui-widget-content">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:80px;float: left;background: #eee;text-align: center;padding-top:8px; background-color: #ba6701">
+            <img src="/public/images/icons/network_64.png" width="64" height="64" />
+        </div>
+        <div style="padding: 10px;margin-left: 80px;">
+            <p style="color:#8b0000">La connexion entre votre ordinateur et le serveur de myges.fr n'a pu être établie.</p>
+
+            <div style="padding-left:10px;">
+                <ul>
+                    <li style="margin-top: 2px">vérifiez que votre ordinateur est bien connecté à internet</li>
+                    <li style="margin-top: 2px">assurez-vous qu'aucun plugin ou module complémentaire installé sur votre navigateur ne bloque les échanges avec myges.fr</li>
+                    <li style="margin-top: 2px">myges.fr est peut-être temporairement indisponible</li>
+                </ul>
+            </div><button id="j_idt10:j_idt14" name="j_idt10:j_idt14" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" style="margin-top:20px;" onclick="window.open('javascript:reloadPage();','_self')"><span class="ui-button-icon-left ui-icon ui-c refresh-icon16"></span><span class="ui-button-text ui-c">Recharger la page</span></button><script id="j_idt10:j_idt14_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt10_j_idt14",{id:"j_idt10:j_idt14",widgetVar:"widget_j_idt10_j_idt14"});</script>
+        </div></div></div><script id="j_idt10:mgAjaxErrorDialog_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","mgAjaxErrorDialog",{id:"j_idt10:mgAjaxErrorDialog",widgetVar:"mgAjaxErrorDialog",draggable:false,resizable:false,modal:true,width:"440"});});</script><div id="j_idt10:mgLoadingBar" class="ui-notificationbar ui-widget ui-widget-content mg_loadingbar_container"><table>
+<tbody>
+<tr>
+<td>
+            <img src="/public/images/img_loading.gif" width="48px" height="48px" /></td>
+<td><img id="j_idt10:j_idt18" width="20" height="20" alt="" src="/javax.faces.resource/spacer/dot_clear.gif.jsf?ln=primefaces&amp;v=5.1" /></td>
+<td><span class="mg_loadingbar_text">Chargement...</span></td>
+</tr>
+</tbody>
+</table>
+</div><script id="j_idt10:mgLoadingBar_s" type="text/javascript">$(function(){PrimeFaces.cw("NotificationBar","mgLoadingBar",{id:"j_idt10:mgLoadingBar",widgetVar:"mgLoadingBar",position:"bottom",effect:"fade",effectSpeed:"normal"});});</script><div id="j_idt10:j_idt20"></div><script id="j_idt10:j_idt20_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt10_j_idt20",{id:"j_idt10:j_idt20",widgetVar:"widget_j_idt10_j_idt20",start:function(){onAjax();},error:function(){ajaxErrorStatusHandler();},complete:function(){PF('mgLoadingBar').hide();}});});</script>
+
+<div id="mg_container">
+    <div id="mg_portal_top">
+        <div id="mg_portal_header">
+
+            
+            <div id="mg_portal_header_top" class="mg_hideOnPrint">
+                <div id="mg_portal_header_top_container">
+                    <img id="mg_portal_title_logo" src="/public/images/icons/logo_myges_126x40.png" alt="myGes logo" />
+
+                    <img id="mg_portal_title_espace_etudiant" src="/public/images/icons/espace_student_352x18_grey.png" alt="espace student" />
+
+                    
+                    <div class="mg_social_network">
+                        <a class="mg_icon twitter-icon28 mg_social_link" href="https://twitter.com/Reseau_GES" target="_blank"></a>
+                        <a class="mg_icon facebook-icon28 mg_social_link" href="https://www.facebook.com/ReseauGES" target="_blank"></a>
+                        <a class="mg_icon google-icon28 mg_social_link" href="https://plus.google.com/communities/107152303298421094234" target="_blank"></a>
+                        <a class="mg_icon youtube-icon28 mg_social_link" href="https://www.youtube.com/user/ReseauGES" target="_blank"></a>
+                        <a class="mg_icon rss-icon28 mg_social_link" href="/rss/news" target="_blank"></a>
+                    </div><div id="j_idt22:j_idt23" class="ui-outputpanel ui-widget" style="display: inline">
+        <div id="mg_user_message">
+            <a href="/common/user-message">
+                <img src="/public/images/icons/mail-icon_28x28_msg.png" style="float: left" alt="fleche" />
+            </a>
+        </div></div>
+
+                    <div id="mg_portal_title_deconnection">
+                        <img src="/public/images/icons/fleche/fleche_droite_bleu.png" alt="fleche" />
+                        <a id="mg_portal_title_deconnection_lien" href="/logout">déconnexion</a>
+                    </div>
+                </div>
+            </div>
+                <div id="mg_portal_header_bottom" class="mg_hideOnPrint">
+                    <div id="mg_portal_header_bottom_container">
+
+                        <ul id="mg_portal_nav">
+
+    <li class="mg_nav_group mg_userinfo "><a id="userinfo:mg_userinfo_a" name="userinfo:mg_userinfo_a" href="" style="padding: 0;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 160px; line-height: 22px; background-color: #595959"><img id="userinfo:photo" src="https://ges-dl.kordis.fr/public/dEkj-aOcIw52B9RsgY-opy4qCbCgfvLFCZSMwXEBz3M?pfdrid_c=true" alt="" style="height: 46px;width: 36px" />
+            <span>DEROUAZ</span>
+            <br />
+
+            <div style="float: left;padding: 0;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 85px; line-height: 22px;">
+                <span>Karim</span>
+            </div>
+
+            <span id="mg_menu_texte_fleche" style="float: right; margin-right: 10px; margin-top: 10px"></span></a>
+
+        <ul id="mg_userinfo_panel" class="mg_hiddable">
+
+            <li style=" list-style: none; height:27px;  width:335px">
+                <div style="height: 26px;width: 26px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" style="float: left; height: 26px; width: 26px;" class="mg_icon perso-icon24" />
+                </div><a href="/common/student-profile" id="userinfo:j_idt34" style="font-size: 11px; font-weight: normal;letter-spacing:0.4px;;">Modifier mes informations personnelles</a>
+            </li>
+                <li style=" list-style: none; height:27px; width:330px">
+                    <div style="height: 26px;width: 26px;float:left;background-color: #ba6701;margin-right:10px">
+                        <img src="/public/images/clear.cache.gif" style="float: left; height: 26px; width: 26px; " class="mg_icon profil-icon24" />
+                    </div><a href="/common/user-photo" id="userinfo:j_idt44" style="font-size: 11px; font-weight: normal;letter-spacing:0.4px;;">Ajouter/Modifier ma photo de profil</a>
+
+                </li>
+                <li style=" list-style: none; height:27px;  width:330px">
+                    <div style="height: 26px;width: 26px;float:left;background-color: #4e58c9;margin-right:10px">
+                        <img src="/public/images/clear.cache.gif" style="float: left; height: 26px; width: 26px;" class="mg_icon mail-icon24" />
+                    </div>
+                    <div class="mg_user_menu_row"><a href="/common/user-mail" id="userinfo:j_idt49" style="font-size: 11px; font-weight: normal;letter-spacing:0.4px;;">Paramétrer ma boite mail</a>
+                    </div>
+                </li>
+
+            <li style="height: 1px; background-color: #343434; margin-top: 5px; list-style: none;"></li>
+
+            <li style="list-style: none; height:26px;  width:330px">
+                <img src="/public/images/icons/fleche/fleche_droite_bleu.png" style="margin-left: 230px;width:5px;height:9px " alt="fleche" />
+                <a class="mg_portal_title_deconnection_lien_menu" href="/logout">déconnexion</a>
+            </li>
+
+        </ul><div id="userinfo:j_idt53" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all" style="">DEROUAZ Karim</div><script id="userinfo:j_idt53_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_userinfo_j_idt53",{id:"userinfo:j_idt53",widgetVar:"widget_userinfo_j_idt53",showEffect:"fade",hideEffect:"fade",target:"userinfo:mg_userinfo_a"});});</script>
+    </li>
+        <script type="text/javascript">
+            function loadPhoto(retry) {
+                if (retry > 0) {
+
+                    $.ajax({
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        global: true,
+                        type: "GET",
+                        url: 'https://ges-dl.kordis.fr/private/iFgs6K6KjuqrLfL8hsYPg-lktsPGlqsgUO53TZTouDQ',
+                        statusCode: {
+                            302: function () {
+                                loadPhoto(retry - 1);
+                            }
+                        },
+                        complete: function (xhr, status, args) {
+                        }
+                    });
+                }
+            }
+
+            $(function () {
+                        loadPhoto(4);
+                    }
+            );
+        </script>
+    
+
+        <li class="mg_nav_item   "><a href="/student/home" target="_self">
+
+                Accueil
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   "><a href="/student/planning-calendar" target="_self">
+
+                Plannings
+            </a>
+
+        </li>
+            <li class="mg_nav_group  ">
+                <a class="mg_nav_a" href="#"> 
+                    <div id="mg_menu_texte">
+                        Scolarité
+                        <span id="mg_menu_texte_fleche"></span>
+                    </div>
+                </a>
+
+                <ul class="mg_hiddable">
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ba6701;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon year-info-icon" alt="year-info-icon" />
+                </div><a href="/common/student-documents" target="_self">
+
+                Documents annuels
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ba6701;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon document-icon" alt="document-icon" />
+                </div><a href="/student/documents" target="_self">
+
+                Documents du dossier
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ba6701;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon invoice-icon" alt="invoice-icon" />
+                </div><a href="/student/invoice" target="_self">
+
+                Factures et avoirs
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon course-data-icon" alt="course-data-icon" />
+                </div><a href="/student/courses-files" target="_self">
+
+                Supports de cours
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon mark-icon" alt="mark-icon" />
+                </div><a href="/student/marks" target="_self">
+
+                Notes et absences
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon syllabus-icon" alt="syllabus-icon" />
+                </div><a href="/student/syllabus-list" target="_self">
+
+                Syllabus cours
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon elearning-icon" alt="elearning-icon" />
+                </div><a href="/common/elearning" target="_self">
+
+                E-learning
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon elearning-icon" alt="elearning-icon" />
+                </div><a href="/student/digital-university" target="_blank">
+
+                T-Book
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon pcie-icon" alt="pcie-icon" />
+                </div><a href="/common/pcie" target="_self">
+
+                ICDL
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon toeic-icon" alt="toeic-icon" />
+                </div><a href="/common/toeic" target="_self">
+
+                TOEIC
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #4e58c9;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon open_fill-icon" alt="open_fill-icon" />
+                </div><a href="/student/open-gestion" target="_self">
+
+                Programme OPEN
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #4e58c9;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon project-list-icon" alt="project-list-icon" />
+                </div><a href="/student/project-list" target="_self">
+
+                Projets pédagogiques
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #4e58c9;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon practical-list-icon" alt="practical-list-icon" />
+                </div><a href="/student/practical-list" target="_self">
+
+                Travaux pratiques
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ff9d25;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon pictures-icon" alt="pictures-icon" />
+                </div><a href="/student/student-directory" target="_self">
+
+                Trombinoscope étudiants
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ff9d25;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon pictures-icon" alt="pictures-icon" />
+                </div><a href="/student/student-teacher-directory" target="_self">
+
+                Trombinoscope intervenants
+            </a>
+
+        </li>
+                </ul>
+            </li>
+
+        <li class="mg_nav_item   "><a href="https://relationsentreprises.skolae.fr" target="_blanc">
+
+                Relations entreprises
+            </a>
+
+        </li>
+            <li class="mg_nav_group  ">
+                <a class="mg_nav_a" href="#"> 
+                    <div id="mg_menu_texte">
+                        Mes services
+                        <span id="mg_menu_texte_fleche"></span>
+                    </div>
+                </a>
+
+                <ul class="mg_hiddable">
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon elearning-icon" alt="elearning-icon" />
+                </div><a href="/student/academic-software" target="_blank">
+
+                Mes logiciels
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon elearning-icon" alt="elearning-icon" />
+                </div><a href="/student/campus-skills" target="_blank">
+
+                Mon livret d'apprentissage
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ba6701;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon upload-icon" alt="upload-icon" />
+                </div><a href="/common/resume-manager" target="_self">
+
+                Mes CV numériques
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #217bb2;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon partners-icon" alt="partners-icon" />
+                </div><a href="/student/contacts" target="_self">
+
+                Contacts
+            </a>
+
+        </li>
+
+        <li class="mg_nav_item   mg_with_icon">
+                <div style="height: 36px;width: 36px;float:left;background-color: #ff9d25;margin-right:10px">
+                    <img src="/public/images/clear.cache.gif" class="mg_icon partners-icon" alt="partners-icon" />
+                </div><a href="/common/partners" target="_self">
+
+                Offres partenaires
+            </a>
+
+        </li>
+                </ul>
+            </li>
+
+        <li class="mg_nav_item   "><a href="https://outlook.office365.com/" target="_blank">
+
+                Webmail
+            </a>
+
+        </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <div id="mg_portal_body">
+            <div id="mg_portal_slideshow" class="mg_hideOnPrint">
+    
+    <div class="flexslider-container">
+        <div class="mg_slideshow_overlay"></div>
+        <div class="flexslider">
+            <ul class="slides">
+    <li><a href="#">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0kzXA6STCdEE0" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://my.weezevent.com/ailleurs-exposition-collective-de-photographie-1" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k94mT0vsmF1U" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="/common/slideshow/2823/">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0kzUCE-sWtDT7" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="/common/slideshow/2821/">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0kxcbZMarNNo-" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://relationsentreprises.skolae.fr/" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k7NdSEfZSZbi" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://doc.reseau-ges.fr/documents/Presentation_PE.pdf" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k5f6AIjWYGqN" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://doc.reseau-ges.fr/documents/Presentation_PERMIS.pdf" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k7W3UEHNgssc" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://fr.statista.com/inscription/#scientific" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k64ILf4Zg0Tv" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="#">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k7e9LOapEhUt" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://doc.reseau-ges.fr/documents/Flyer_2024-2025_ESGI.pdf" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0kznQMp2sxE7_" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="#">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k6BoDMVlTMis" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://partners.kordis.fr/cyberlibris" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k_WLVfWPAA3O" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="/common/slideshow/2305/">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k517o28pLDsx" width="900px" height="260px" /></a>
+
+        
+    </li>
+    <li><a href="https://discord.gg/NqTkP8YdsE" target="_blank">
+            <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw6rQVF8JlH0k8Ew_Kpq0wpG" width="900px" height="260px" /></a>
+
+        
+    </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('.flexslider').hide().flexslider({
+                animation: "fade",
+                controlsContainer: ".flexslider-container",
+                slideshowSpeed: 7000,
+                directionNav: false,
+                itemMargin: 15
+
+            }).fadeIn();
+        });
+    </script>
+
+            </div>
+            <div class="spacer"></div>
+
+
+        <div id="mg_portal_center">
+            <div id="mg_portal_content">
+                        <div class="mg_hideOnPrint mg_portal_partners">
+                                        <div class="mg_partner" style="margin-left: 20px;">
+                                            <a href="https://portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/overview" target="_blank">
+                                                <img src="/public/images/partner/partner_mscampus_120x120-grey.png" alt="msccampus" />
+                                            </a>
+                                        </div>
+                                <div class="mg_partner" style="margin-left: 20px;">
+                                    <a href="https://www.ornikar.com/" target="_blank">
+                                        <img src="/public/images/partner/partner_ornikar_120x120-grey.png" alt="ornikar" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-left: 20px;">
+                                    <a href="/common/partners#kipup" target="_blank">
+                                        <img src="/public/images/partner/partner_kipup_120x120.png" alt="kipup" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-left: 20px;">
+                                    <a href="/common/partners#isic" target="_blank">
+                                        <img src="/public/images/partner/partner_isic_120x120.png" alt="isic" />
+                                    </a>
+                                </div>
+                        </div>
+
+                        <div class="mg_hideOnPrint mg_portal_partners_left">
+                                <div class="mg_partner" style="margin-right: 20px;">
+                                    <a href="https://impression.reseau-ges.fr/gespage/" target="_blank">
+                                        <img src="/public/images/partner/partner_gespage_120x120-grey.png" alt="gespage" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-right: 20px;">
+                                    <a href="/common/partners#globalexam">
+                                        <img src="/public/images/partner/partner_globalExam_120x120-grey.png" alt="globalexam" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-right: 20px;">
+                                    <a href="https://reseau-ges.studapart.com/" target="_blank">
+                                        <img src="/public/images/partner/partner_studapart_120x120-grey.png" alt="studapart" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-right: 20px;">
+                                    <a href="https://www.mrstudent.fr/myges" target="_blank">
+                                        <img src="/public/images/partner/partner_monsieurstudent_120x120-grey.png" alt="monsieurstudent" />
+                                    </a>
+                                </div>
+                                <div class="mg_partner" style="margin-right: 20px;">
+                                    <a href="https://app.klaro.fr/bienvenue/v1/company/ges/1206caa6-e54e-46e1-8ee0-a2a018fa761f" target="_blank">
+                                        <img src="/public/images/partner/partner_klaro_120x120-grey.png" alt="Klaro" />
+                                    </a>
+                                </div>
+
+                        </div>
+<form id="j_idt156" name="j_idt156" method="post" action="/student/home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt156" value="j_idt156" />
+<div id="j_idt156:j_idt157" class="ui-breadcrumb ui-module ui-widget ui-widget-header ui-helper-clearfix ui-corner-all" role="menu"><ul><li role="menuitem"><a tabindex="-1" class="ui-menuitem-link ui-corner-all ui-icon ui-icon-home" href="/student/home"><span class="ui-menuitem-text">Root</span></a></li><li class="ui-breadcrumb-chevron ui-icon ui-icon-triangle-1-e"></li><li role="menuitem"><a tabindex="-1" class="ui-menuitem-link ui-corner-all" href="/student/home"><span class="ui-menuitem-text">Accueil</span></a></li></ul></div><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-7810293706048383247:381645622781132091" autocomplete="off" />
+</form>
+
+    <div class="mg_home_welcome">
+        <div class="mg_home_content">
+            <div class="mg_home_title">
+                Bonjour Karim
+            </div>
+            <div style="padding: 5px;">
+
+                <img style="height: 95px; width: 70px" class="mg_dropcap" src="/public/images/student.jpg" alt="GES" />
+                
+                
+                <p style="line-height: 150%">Bienvenue sur l'espace étudiants de myGES. Cet espace vous permet d'accèder aux services réservés à nos étudiants.</p>
+
+                <p>N'hésitez pas à consulter <a href="/student/help" id="j_idt179" target="_blank">notre guide de présentation</a>.
+
+                </p>
+            </div>
+        </div>
+    </div><div id="cvecDialog2" class="ui-dialog ui-widget ui-widget-content ui-overlay-hidden ui-corner-all ui-shadow" style="display: flex; align-items: center; justify-content: center;"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="cvecDialog2_title" class="ui-dialog-title">Renseignement CVEC</span><a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a></div><div class="ui-dialog-content ui-widget-content">
+
+    <div style="display: flex; flex-direction: column;">
+        <p></p>
+        <p></p>
+        <p>Votre compte sera bloqué à partir du 01/01/24, pour éviter le blocage,
+        veuillez renseigner votre numéro de CVEC en cliquant <a href="/common/student-profile" style="font-weight: bold; color: red;">ici</a>.</p>
+    </div></div></div><script id="cvecDialog2_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","CVECDialogVar",{id:"cvecDialog2",widgetVar:"CVECDialogVar",resizable:false,modal:true,width:"600",height:"75",showEffect:"fade",hideEffect:"fade"});});</script>
+
+        <div id="publicNewsWidget" class="mg_widget  mg_widget_2x1  mg_widget_full blue ">
+                <div class="mg_title news-icon28"><span id="publicNewsWidget:title" style="">Actualités GES</span>
+                </div>
+
+            <div class="mg_content ">
+<form id="publicNewsWidget:publicNewsForm" name="publicNewsWidget:publicNewsForm" method="post" action="/student/home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="publicNewsWidget:publicNewsForm" value="publicNewsWidget:publicNewsForm" />
+<div id="publicNewsWidget:publicNewsForm:publicNewsPanel" class="ui-outputpanel ui-widget"><div id="publicNewsWidget:publicNewsForm:publicNewsDataTable" class="ui-datalist ui-widget mg_noHeader noBorder noBackground"><div id="publicNewsWidget:publicNewsForm:publicNewsDataTable_content" class="ui-datalist-content ui-widget-content"><ul id="publicNewsWidget:publicNewsForm:publicNewsDataTable_list" class="ui-datalist-data"><li class="ui-datalist-item"><a href="/common/news/4947/" id="publicNewsWidget:publicNewsForm:publicNewsDataTable:0:j_idt184"><span style="float: left">15/05</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Tout comprendre sur la technologie durable
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/4940/" id="publicNewsWidget:publicNewsForm:publicNewsDataTable:1:j_idt184"><span style="float: left">24/04</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Quelles études choisir pour travailler dans le développement mobile ?
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/4931/" id="publicNewsWidget:publicNewsForm:publicNewsDataTable:2:j_idt184"><span style="float: left">17/04</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Laval Virtual 2024
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/4923/" id="publicNewsWidget:publicNewsForm:publicNewsDataTable:3:j_idt184"><span style="float: left">15/04</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Comment se former à la cybersécurité en 2024 ?
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/4914/" id="publicNewsWidget:publicNewsForm:publicNewsDataTable:4:j_idt184"><span style="float: left">10/04</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Le hackathon Mob &amp; Soft avec WorkAdventure
+                        </div></a></li></ul></div><div id="publicNewsWidget:publicNewsForm:publicNewsDataTable_paginator_bottom" class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bottom" role="navigation"> <span class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first">p</span></span><span class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev">p</span></span><span class="ui-paginator-current">1/114</span> <span class="ui-paginator-next ui-state-default ui-corner-all" tabindex="0"><span class="ui-icon ui-icon-seek-next">p</span></span><span class="ui-paginator-last ui-state-default ui-corner-all" tabindex="0"><span class="ui-icon ui-icon-seek-end">p</span></span></div></div><script id="publicNewsWidget:publicNewsForm:publicNewsDataTable_s" type="text/javascript">$(function(){PrimeFaces.cw("DataList","widget_publicNewsWidget_publicNewsForm_publicNewsDataTable",{id:"publicNewsWidget:publicNewsForm:publicNewsDataTable",widgetVar:"widget_publicNewsWidget_publicNewsForm_publicNewsDataTable",paginator:{id:['publicNewsWidget:publicNewsForm:publicNewsDataTable_paginator_bottom'],rows:5,rowCount:566,page:0,currentPageTemplate:'{currentPage}/{totalPages}'}});});</script></div><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-7810293706048383247:381645622781132091" autocomplete="off" />
+</form>
+            </div>
+        </div>
+
+        <div id="privateNewsWidget" class="mg_widget  mg_widget_2x1  mg_widget_full blue ">
+                <div class="mg_title info-icon28"><span id="privateNewsWidget:title" style="">Actualités de l'école</span>
+                </div>
+
+            <div class="mg_content ">
+<form id="privateNewsWidget:privateNewsForm" name="privateNewsWidget:privateNewsForm" method="post" action="/student/home" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="privateNewsWidget:privateNewsForm" value="privateNewsWidget:privateNewsForm" />
+<div id="privateNewsWidget:privateNewsForm:newsPanel" class="ui-outputpanel ui-widget"><div id="privateNewsWidget:privateNewsForm:privateNewsDataTable" class="ui-datalist ui-widget mg_noHeader noBorder noBackground"><div id="privateNewsWidget:privateNewsForm:privateNewsDataTable_content" class="ui-datalist-content ui-widget-content"><ul id="privateNewsWidget:privateNewsForm:privateNewsDataTable_list" class="ui-datalist-data"><li class="ui-datalist-item"><a href="/common/news/4143/" id="privateNewsWidget:privateNewsForm:privateNewsDataTable:0:j_idt206"><span style="float: left">31/03 11h12</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Partenariat BDE x Colvert
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/2814/" id="privateNewsWidget:privateNewsForm:privateNewsDataTable:1:j_idt206"><span style="float: left">29/11 11h42</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            Job Dating Gaming (07/12/21)
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/2794/" id="privateNewsWidget:privateNewsForm:privateNewsDataTable:2:j_idt206"><span style="float: left">16/11 10h05</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            TOURNOI CLUB D' ECHEC (25/11/21)
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/2783/" id="privateNewsWidget:privateNewsForm:privateNewsDataTable:3:j_idt206"><span style="float: left">08/11 17h56</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            TOURNOI NINTENDO (13/11/21)
+                        </div></a></li><li class="ui-datalist-item"><a href="/common/news/2398/" id="privateNewsWidget:privateNewsForm:privateNewsDataTable:4:j_idt206"><span style="float: left">22/04 14h37</span>
+
+                        <div style="width: 300px;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 1em;margin-top: 1px">
+                            
+                            ESGI Got Talent (Saison 1) Mai 2021
+                        </div></a></li></ul></div><div id="privateNewsWidget:privateNewsForm:privateNewsDataTable_paginator_bottom" class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bottom" role="navigation"> <span class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first">p</span></span><span class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev">p</span></span><span class="ui-paginator-current">1/31</span> <span class="ui-paginator-next ui-state-default ui-corner-all" tabindex="0"><span class="ui-icon ui-icon-seek-next">p</span></span><span class="ui-paginator-last ui-state-default ui-corner-all" tabindex="0"><span class="ui-icon ui-icon-seek-end">p</span></span></div></div><script id="privateNewsWidget:privateNewsForm:privateNewsDataTable_s" type="text/javascript">$(function(){PrimeFaces.cw("DataList","widget_privateNewsWidget_privateNewsForm_privateNewsDataTable",{id:"privateNewsWidget:privateNewsForm:privateNewsDataTable",widgetVar:"widget_privateNewsWidget_privateNewsForm_privateNewsDataTable",paginator:{id:['privateNewsWidget:privateNewsForm:privateNewsDataTable_paginator_bottom'],rows:5,rowCount:151,page:0,currentPageTemplate:'{currentPage}/{totalPages}'}});});</script></div><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-7810293706048383247:381645622781132091" autocomplete="off" />
+</form>
+            </div>
+        </div>
+
+        <div id="j_idt210" class="mg_widget  mg_widget_2x2  mg_widget_light blue mg_widget_border">
+                <div class="mg_title myEvent-icon28_blue"><span id="j_idt210:title" style="">Mes événements Campus</span>
+                </div>
+
+            <div class="mg_content ">
+
+
+    <div style="overflow-y: scroll;height: 275px;border: 1px solid silver;"><div id="j_idt210:j_idt211:eventPanel" class="ui-outputpanel ui-widget"><div id="j_idt210:j_idt211:j_idt213" class="ui-outputpanel ui-widget">
+                <div style="text-align:center;padding-top:10px;">
+        <div class="spacer"></div>
+        <div class="ui-messages ui-widget mg_box mg_info " style="color:#888">
+            <div class="ui-messages-none ui-corner-all">
+                <table>
+                    <tr>
+                        <td style="display: none">
+                            <span class="ui-messages-none-icon"></span>
+                        </td>
+                        <td>
+                            <span class="ui-messages-none-detail">Aucun événement disponible pour l'instant.</span>
+                        </td>
+                    </tr>
+
+                </table>
+                
+            </div>
+        </div>
+                    
+                    
+                </div></div></div>
+    </div>
+    <div class="mg_summary_widget">
+        <a href="/common/events">Voir tous les Evénements</a>
+        <img src="/public/images/icons/fleche/fleche_droite_grey.png" alt="fleche" />
+    </div>
+            </div>
+        </div>
+
+        <div id="j_idt231" class="mg_widget  mg_widget_2x1  mg_widget_light blue mg_widget_border">
+                <div class="mg_title year-info-icon28_blue"><span id="j_idt231:title" style="">Mes derniers documents annuels</span>
+                </div>
+
+            <div class="mg_content "><div id="j_idt231:j_idt232" class="ui-datatable ui-widget mg_noHeader"><div class="ui-datatable-tablewrapper"><table role="grid"><thead id="j_idt231:j_idt232_head"><tr role="row"><th id="j_idt231:j_idt232:j_idt233" class="ui-state-default" role="columnheader" style="width:35px;"><span class="ui-column-title"></span></th><th id="j_idt231:j_idt232:j_idt235" class="ui-state-default" role="columnheader" style="width:300px;"><span class="ui-column-title"></span></th><th id="j_idt231:j_idt232:j_idt241" class="ui-state-default" role="columnheader" style="width:10px;"><span class="ui-column-title"></span></th></tr></thead><tfoot id="j_idt231:j_idt232_foot"></tfoot><tbody id="j_idt231:j_idt232_data" class="ui-datatable-data ui-widget-content"><tr data-ri="0" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">27/11</span></td><td role="gridcell" style="width:300px;">
+
+                <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt231:j_idt232:0:j_idt237" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUKaL87AxCcTOCZSMwXEBz3M'); return false;" style="margin-left: 5px;font-size: 11px">
+                        Avange ESGI x Forest Hill
+                    </a>
+                </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUKaL87AxCcTOCZSMwXEBz3M'); return false;">
+                    <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" /></a></td></tr><tr data-ri="1" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">20/11</span></td><td role="gridcell" style="width:300px;">
+
+                <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt231:j_idt232:1:j_idt237" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUBwh5oVM1uU2CZSMwXEBz3M'); return false;" style="margin-left: 5px;font-size: 11px">
+                        Document Pré-Rentrée 3A IABD 2024-2025
+                    </a>
+                </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUBwh5oVM1uU2CZSMwXEBz3M'); return false;">
+                    <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" /></a></td></tr><tr data-ri="2" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">30/10</span></td><td role="gridcell" style="width:300px;">
+
+                <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt231:j_idt232:2:j_idt237" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUBa8K_GeNDTACZSMwXEBz3M'); return false;" style="margin-left: 5px;font-size: 11px">
+                        Présentation OPEN 2024/2025
+                    </a>
+                </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUBa8K_GeNDTACZSMwXEBz3M'); return false;">
+                    <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" /></a></td></tr><tr data-ri="3" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">30/10</span></td><td role="gridcell" style="width:300px;">
+
+                <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt231:j_idt232:3:j_idt237" src="/public/images/mimetypes/docx.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUHXEmq2PHUkBCZSMwXEBz3M'); return false;" style="margin-left: 5px;font-size: 11px">
+                        Synthèse document type 2024/2025
+                    </a>
+                </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6KjupQSFOEsinYUHXEmq2PHUkBCZSMwXEBz3M'); return false;">
+                    <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" /></a></td></tr></tbody></table></div></div><script id="j_idt231:j_idt232_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable","widget_j_idt231_j_idt232",{id:"j_idt231:j_idt232",widgetVar:"widget_j_idt231_j_idt232"});});</script>
+
+        <div class="mg_summary_widget">
+            <a href="/common/student-documents">Voir tous les Documents annuels</a>
+            <img src="/public/images/icons/fleche/fleche_droite_grey.png" alt="fleche" />
+        </div>
+            </div>
+        </div>
+
+        <div id="j_idt245" class="mg_widget  mg_widget_2x1  mg_widget_light blue mg_widget_border">
+                <div class="mg_title myLastDoc-icon28_blue"><span id="j_idt245:title" style="">Mes derniers supports de cours</span>
+                </div>
+
+            <div class="mg_content "><div id="j_idt245:j_idt246" class="ui-datatable ui-widget mg_noHeader"><div class="ui-datatable-tablewrapper"><table role="grid"><thead id="j_idt245:j_idt246_head"><tr role="row"><th id="j_idt245:j_idt246:j_idt247" class="ui-state-default" role="columnheader" style="width:35px;"><span class="ui-column-title"></span></th><th id="j_idt245:j_idt246:j_idt249" class="ui-state-default" role="columnheader" style="width:300px;"><span class="ui-column-title"></span></th><th id="j_idt245:j_idt246:j_idt255" class="ui-state-default" role="columnheader" style="width:10px;"><span class="ui-column-title"></span></th></tr></thead><tfoot id="j_idt245:j_idt246_foot"></tfoot><tbody id="j_idt245:j_idt246_data" class="ui-datatable-data ui-widget-content"><tr data-ri="0" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">10/12</span></td><td role="gridcell" style="width:300px;">
+            <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt245:j_idt246:0:j_idt251" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJYVKklXcspZq'); return false;" style="margin-left: 5px;font-size: 11px">
+                    qcm
+                </a>
+            </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJYVKklXcspZq'); return false;">
+                <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" width="16px" height="16px" /></a></td></tr><tr data-ri="1" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">22/11</span></td><td role="gridcell" style="width:300px;">
+            <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt245:j_idt246:1:j_idt251" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJZxEjNsSu0oe'); return false;" style="margin-left: 5px;font-size: 11px">
+                    toeic listening
+                </a>
+            </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJZxEjNsSu0oe'); return false;">
+                <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" width="16px" height="16px" /></a></td></tr><tr data-ri="2" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">21/11</span></td><td role="gridcell" style="width:300px;">
+            <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt245:j_idt246:2:j_idt251" src="/public/images/mimetypes/docx.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJYokKMYI7Pu4'); return false;" style="margin-left: 5px;font-size: 11px">
+                    Fiche Bilan de projet
+                </a>
+            </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJYokKMYI7Pu4'); return false;">
+                <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" width="16px" height="16px" /></a></td></tr><tr data-ri="3" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:35px;"><span style="font-size:11px;">21/11</span></td><td role="gridcell" style="width:300px;">
+            <div style="overflow: hidden; width: 300px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><img id="j_idt245:j_idt246:3:j_idt251" src="/public/images/mimetypes/pdf.png?pfdrid_c=true" alt="" width="15px" height="15px" style="float: left" /><a href="" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJQIRNbwL_gcg'); return false;" style="margin-left: 5px;font-size: 11px">
+                    Cours 4 - Risques et pilotage + Sujet soutenance
+                </a>
+            </div></td><td role="gridcell" style="width:10px;"><a href="/student/home" onclick="window.open('https://ges-dl.kordis.fr/private/iFgs6K6Kjup6PeQZ_6ExJQIRNbwL_gcg'); return false;">
+                <img alt="download" src="/public/images/icons/download-icon_16x16_blue.png" width="16px" height="16px" /></a></td></tr></tbody></table></div></div><script id="j_idt245:j_idt246_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable","widget_j_idt245_j_idt246",{id:"j_idt245:j_idt246",widgetVar:"widget_j_idt245_j_idt246"});});</script>
+
+
+    <div class="mg_summary_widget">
+        <a href="/student/courses-files">Voir tous les Supports de cours</a>
+        <img src="/public/images/icons/fleche/fleche_droite_grey.png" alt="fleche" />
+    </div>
+            </div>
+        </div>
+
+        <div id="j_idt259" class="mg_widget  mg_widget_2x2  mg_widget_full blue ">
+                <div class="mg_title calendar-icon28"><span id="j_idt259:title" style="">Mes événements Skolae</span>
+                </div>
+
+            <div class="mg_content ">
+
+    <div style="overflow-y: scroll;max-height: 275px;border: 1px solid silver"><div id="j_idt259:j_idt260:eventPanel" class="ui-outputpanel ui-widget">
+                <div class="eventDetailPanel event_ESUPCOM-LILLE event_border_ESUPCOM-LILLE" style="padding: 2px 2px;margin-bottom: 5px;border-right-width: 8px;border-left-width: 8px;">
+
+                    <div></div>
+
+                    <div style="width: 220px;float: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+
+                        <div style="padding: 18px 25px;float: left;margin: 7px 3px 0 3px" class="event_logo_ESUPCOM-LILLE_small"></div><a href="/common/event/4093" style="color:#404040;font-size: 1em;margin-bottom: 5px;display: inline;text-decoration: none;">SPEED MEETING DE L'ALTERNANCE ET DES STAGES</a>
+                    </div>
+
+                    <div style="float: right;width: 140px"><span style="font-size: 11px;">A lieu le : </span><span style="color: #404040;font-weight: bold; float: right; margin-right: 10px">12/12/2024</span>
+                    </div>
+
+
+                    <div style="float: right"><button id="j_idt259:j_idt260:eventList:0:j_idt274" name="j_idt259:j_idt260:eventList:0:j_idt274" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left noBorder detail_event_button" onclick="window.open('/common/event/4093','_self')"><span class="ui-button-icon-left ui-icon ui-c search-icon16_blue"></span><span class="ui-button-text ui-c">Détails de l'événement</span></button><script id="j_idt259:j_idt260:eventList:0:j_idt274_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt259_j_idt260_eventList_0_j_idt274",{id:"j_idt259:j_idt260:eventList:0:j_idt274",widgetVar:"widget_j_idt259_j_idt260_eventList_0_j_idt274"});</script>
+                    </div>
+                    <div style="clear: both"></div>
+                    
+
+                </div>
+                <div class="eventDetailPanel event_PPA-LYON event_border_PPA-LYON" style="padding: 2px 2px;margin-bottom: 5px;border-right-width: 8px;border-left-width: 8px;">
+
+                    <div></div>
+
+                    <div style="width: 220px;float: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+
+                        <div style="padding: 18px 25px;float: left;margin: 7px 3px 0 3px" class="event_logo_PPA-LYON_small"></div><a href="/common/event/4102" style="color:#404040;font-size: 1em;margin-bottom: 5px;display: inline;text-decoration: none;">RD LA CANADIENNE - DECLERCK</a>
+                    </div>
+
+                    <div style="float: right;width: 140px"><span style="font-size: 11px;">A lieu le : </span><span style="color: #404040;font-weight: bold; float: right; margin-right: 10px">12/12/2024</span>
+                    </div>
+
+
+                    <div style="float: right"><button id="j_idt259:j_idt260:eventList:1:j_idt274" name="j_idt259:j_idt260:eventList:1:j_idt274" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left noBorder detail_event_button" onclick="window.open('/common/event/4102','_self')"><span class="ui-button-icon-left ui-icon ui-c search-icon16_blue"></span><span class="ui-button-text ui-c">Détails de l'événement</span></button><script id="j_idt259:j_idt260:eventList:1:j_idt274_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt259_j_idt260_eventList_1_j_idt274",{id:"j_idt259:j_idt260:eventList:1:j_idt274",widgetVar:"widget_j_idt259_j_idt260_eventList_1_j_idt274"});</script>
+                    </div>
+                    <div style="clear: both"></div>
+                    
+
+                </div></div>
+    </div>
+            </div>
+        </div>
+
+        <div id="j_idt277" class="mg_widget  mg_widget_2x1 mg_light_widget mg_widget_light blue mg_widget_border">
+                <div class="mg_title project-groups-steps-icon28_blue"><span id="j_idt277:title" style="">Mes prochaines étapes projet</span>
+                </div>
+
+            <div class="mg_content "><div id="j_idt277:j_idt278" class="ui-datatable ui-widget mg_noHeader"><div class="ui-datatable-tablewrapper"><table role="grid"><thead id="j_idt277:j_idt278_head"><tr role="row"><th id="j_idt277:j_idt278:j_idt279" class="ui-state-default" role="columnheader" style="width:29%"><span class="ui-column-title"></span></th><th id="j_idt277:j_idt278:j_idt281" class="ui-state-default" role="columnheader" style="width:61%"><span class="ui-column-title"></span></th><th id="j_idt277:j_idt278:j_idt286" class="ui-state-default" role="columnheader" style="width:10%;"><span class="ui-column-title"></span></th></tr></thead><tfoot id="j_idt277:j_idt278_foot"></tfoot><tbody id="j_idt277:j_idt278_data" class="ui-datatable-data ui-widget-content"><tr data-ri="0" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:29%"><span style="font-size:11px;font-weight: bold;color: #000000">19/01/2025 23h59</span></td><td role="gridcell" style="width:61%"><div id="j_idt277:j_idt278:0:infosStep" class="ui-outputpanel ui-widget">
+                <div style="overflow: hidden; width: 220px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><span style="font-size:11px;">Étape n°2 : 3SRC Projet annuel</span>
+                </div></div><div id="j_idt277:j_idt278:0:j_idt285" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">3SRC Projet annuel : Étape n°2</div><script id="j_idt277:j_idt278:0:j_idt285_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_0_j_idt285",{id:"j_idt277:j_idt278:0:j_idt285",widgetVar:"widget_j_idt277_j_idt278_0_j_idt285",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:0:infosStep"});});</script></td><td role="gridcell" style="width:10%;"><button id="j_idt277:j_idt278:0:linkGroupProject" name="j_idt277:j_idt278:0:linkGroupProject" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only noBorder ui-icon" onclick="window.open('/common/project-group-gestion/365444','_self')"><span class="ui-button-icon-left ui-icon ui-c forward-icon16_blue"></span><span class="ui-button-text ui-c">ui-button</span></button><script id="j_idt277:j_idt278:0:linkGroupProject_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt277_j_idt278_0_linkGroupProject",{id:"j_idt277:j_idt278:0:linkGroupProject",widgetVar:"widget_j_idt277_j_idt278_0_linkGroupProject"});</script><div id="j_idt277:j_idt278:0:j_idt287" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">Suivi des livrables et étapes</div><script id="j_idt277:j_idt278:0:j_idt287_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_0_j_idt287",{id:"j_idt277:j_idt278:0:j_idt287",widgetVar:"widget_j_idt277_j_idt278_0_j_idt287",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:0:linkGroupProject"});});</script></td></tr><tr data-ri="1" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:29%"><span style="font-size:11px;font-weight: bold;color: #000000">22/01/2025 11h30</span></td><td role="gridcell" style="width:61%"><div id="j_idt277:j_idt278:1:infosStep" class="ui-outputpanel ui-widget">
+                <div style="overflow: hidden; width: 220px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><span style="font-size:11px;">Étape n°2 : 3A - SRC2 - Planification de projets SI - 2024-2025</span>
+                </div></div><div id="j_idt277:j_idt278:1:j_idt285" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">3A - SRC2 - Planification de projets SI - 2024-2025 : Étape n°2</div><script id="j_idt277:j_idt278:1:j_idt285_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_1_j_idt285",{id:"j_idt277:j_idt278:1:j_idt285",widgetVar:"widget_j_idt277_j_idt278_1_j_idt285",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:1:infosStep"});});</script></td><td role="gridcell" style="width:10%;"><button id="j_idt277:j_idt278:1:linkGroupProject" name="j_idt277:j_idt278:1:linkGroupProject" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only noBorder ui-icon" onclick="window.open('/common/project-group-gestion/381896','_self')"><span class="ui-button-icon-left ui-icon ui-c forward-icon16_blue"></span><span class="ui-button-text ui-c">ui-button</span></button><script id="j_idt277:j_idt278:1:linkGroupProject_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt277_j_idt278_1_linkGroupProject",{id:"j_idt277:j_idt278:1:linkGroupProject",widgetVar:"widget_j_idt277_j_idt278_1_linkGroupProject"});</script><div id="j_idt277:j_idt278:1:j_idt287" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">Suivi des livrables et étapes</div><script id="j_idt277:j_idt278:1:j_idt287_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_1_j_idt287",{id:"j_idt277:j_idt278:1:j_idt287",widgetVar:"widget_j_idt277_j_idt278_1_j_idt287",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:1:linkGroupProject"});});</script></td></tr><tr data-ri="2" class="ui-widget-content ui-datatable-even" role="row"><td role="gridcell" style="width:29%"><span style="font-size:11px;font-weight: bold;color: #000000">19/02/2025 08h00</span></td><td role="gridcell" style="width:61%"><div id="j_idt277:j_idt278:2:infosStep" class="ui-outputpanel ui-widget">
+                <div style="overflow: hidden; width: 220px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><span style="font-size:11px;">Étape n°3 : 3SRC Projet annuel</span>
+                </div></div><div id="j_idt277:j_idt278:2:j_idt285" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">3SRC Projet annuel : Étape n°3</div><script id="j_idt277:j_idt278:2:j_idt285_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_2_j_idt285",{id:"j_idt277:j_idt278:2:j_idt285",widgetVar:"widget_j_idt277_j_idt278_2_j_idt285",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:2:infosStep"});});</script></td><td role="gridcell" style="width:10%;"><button id="j_idt277:j_idt278:2:linkGroupProject" name="j_idt277:j_idt278:2:linkGroupProject" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only noBorder ui-icon" onclick="window.open('/common/project-group-gestion/365444','_self')"><span class="ui-button-icon-left ui-icon ui-c forward-icon16_blue"></span><span class="ui-button-text ui-c">ui-button</span></button><script id="j_idt277:j_idt278:2:linkGroupProject_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt277_j_idt278_2_linkGroupProject",{id:"j_idt277:j_idt278:2:linkGroupProject",widgetVar:"widget_j_idt277_j_idt278_2_linkGroupProject"});</script><div id="j_idt277:j_idt278:2:j_idt287" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">Suivi des livrables et étapes</div><script id="j_idt277:j_idt278:2:j_idt287_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_2_j_idt287",{id:"j_idt277:j_idt278:2:j_idt287",widgetVar:"widget_j_idt277_j_idt278_2_j_idt287",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:2:linkGroupProject"});});</script></td></tr><tr data-ri="3" class="ui-widget-content ui-datatable-odd" role="row"><td role="gridcell" style="width:29%"><span style="font-size:11px;font-weight: bold;color: #000000">11/05/2025 23h59</span></td><td role="gridcell" style="width:61%"><div id="j_idt277:j_idt278:3:infosStep" class="ui-outputpanel ui-widget">
+                <div style="overflow: hidden; width: 220px; height: 15px;white-space: nowrap;text-overflow: ellipsis;"><span style="font-size:11px;">Étape n°4 : 3SRC Projet annuel</span>
+                </div></div><div id="j_idt277:j_idt278:3:j_idt285" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">3SRC Projet annuel : Étape n°4</div><script id="j_idt277:j_idt278:3:j_idt285_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_3_j_idt285",{id:"j_idt277:j_idt278:3:j_idt285",widgetVar:"widget_j_idt277_j_idt278_3_j_idt285",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:3:infosStep"});});</script></td><td role="gridcell" style="width:10%;"><button id="j_idt277:j_idt278:3:linkGroupProject" name="j_idt277:j_idt278:3:linkGroupProject" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only noBorder ui-icon" onclick="window.open('/common/project-group-gestion/365444','_self')"><span class="ui-button-icon-left ui-icon ui-c forward-icon16_blue"></span><span class="ui-button-text ui-c">ui-button</span></button><script id="j_idt277:j_idt278:3:linkGroupProject_s" type="text/javascript">PrimeFaces.cw("Button","widget_j_idt277_j_idt278_3_linkGroupProject",{id:"j_idt277:j_idt278:3:linkGroupProject",widgetVar:"widget_j_idt277_j_idt278_3_linkGroupProject"});</script><div id="j_idt277:j_idt278:3:j_idt287" class="ui-tooltip ui-widget ui-widget-content ui-shadow ui-corner-all">Suivi des livrables et étapes</div><script id="j_idt277:j_idt278:3:j_idt287_s" type="text/javascript">$(function(){PrimeFaces.cw("Tooltip","widget_j_idt277_j_idt278_3_j_idt287",{id:"j_idt277:j_idt278:3:j_idt287",widgetVar:"widget_j_idt277_j_idt278_3_j_idt287",showEffect:"fade",hideEffect:"fade",target:"j_idt277:j_idt278:3:linkGroupProject"});});</script></td></tr></tbody></table></div></div><script id="j_idt277:j_idt278_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable","widget_j_idt277_j_idt278",{id:"j_idt277:j_idt278",widgetVar:"widget_j_idt277_j_idt278"});});</script>
+
+    <div class="mg_summary_widget">
+        <a href="/student/project-list">Voir la liste de mes projets pédagogiques</a>
+        <img src="/public/images/icons/fleche/fleche_droite_grey.png" alt="fleche" />
+        
+        
+        
+        
+    </div>
+            </div>
+        </div>
+
+                <div class="spacer"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="mg_footer" class="shadow">
+
+    <div id="mg_contact"><a href="/common/legal-notice" id="j_idt290:j_idt293">
+            Mentions légales
+        </a>
+        | Support technique <a href="https://support-skolae-peda.freshdesk.com/fr/support/home">Skolae</a>
+    </div>
+    </div>
+
+</div>
+        <script type="text/javascript">
+            /* Au démarrage */
+            $(function () {
+                $(".flex-control-nav").hide();
+                $(".flexslider-container").hover(
+                        function () {
+                            $(".flex-control-nav", this).fadeIn(200);
+                            $(".flex-direction-nav", this).fadeIn(200);
+                            $(".flexslider  .slides .mg_title", this).fadeIn(200);
+                        },
+                        function () {
+                            $(".flex-control-nav", this).hide();
+                            $(".flex-direction-nav", this).hide();
+                            $(".flexslider  .slides .mg_title", this).hide();
+                        });
+
+                $("#mg_portal_slideshow .mg_slideshow_overlay").click(
+                        function () {
+                            var $index = $("#mg_portal_slideshow .flex-active").html();
+                            if ($index == null) {
+                                $index = 0;
+                            }
+                            var slide = $("#mg_portal_slideshow .slides").children("li")[$index];
+                            $("a img", slide).trigger('click');
+                        }
+                );
+            });
+            $(".mg_partner img").load(function () {
+                var pph = $("#mg_portal_partners").height();
+                var pch = $("#mg_portal_content").height();
+                if (pch < pph)
+                    $("#mg_portal_content").css('min-height', pph);
+            });
+
+            //ga
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-10620884-12']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </body>
+</html>
